@@ -42,11 +42,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUI()
-    }
-    
-    func setUI() {
-        
         walletLbl.text = "내 지갑: "
         totalPrice.text = "0원"
         menuLbl.text = "종류"
@@ -67,6 +62,7 @@ class ViewController: UIViewController {
         resetBtn.backgroundColor = .yellow
         resetBtn.setTitleColor(.blue, for: .normal)
         //resetBtn.titleLabel?.font = [UIFont.systemFont(ofSize: <#T##CGFloat#>)]
+        resetBtn.frame.size = CGSize(width: 100, height: 30)
         
         buyBtn.setTitle("구매하기", for: .normal)
         buyBtn.backgroundColor = .blue
@@ -98,6 +94,12 @@ class ViewController: UIViewController {
         firstStepper.addTarget(self, action: #selector(firstStepperTapped(_:)), for: .touchUpInside)
         secondStepper.addTarget(self, action: #selector(secondStepperTapped(_:)), for: .touchUpInside)
         thirdsSepper.addTarget(self, action: #selector(thirdStepperTapped(_:)), for: .touchUpInside)
+        
+        setUI()
+    }
+    
+    func setUI() {
+        
         
         [menuLbl, priceLbl, numberLbl, menu1Lbl, menu2Lbl, menu3Lbl, price1, price2, price3, numberLbl, num1Lbl, num2Lbl, num3Lbl, endTotalLbl].forEach {
             $0.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
@@ -167,10 +169,14 @@ class ViewController: UIViewController {
             endTotalLbl.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 200),
             endTotalLbl.topAnchor.constraint(equalTo: menu3Lbl.topAnchor, constant: 50),
             
-            resetBtn.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 100),
+            resetBtn.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 50),
             resetBtn.topAnchor.constraint(equalTo: endTotalLbl.topAnchor, constant: 50),
-            buyBtn.leadingAnchor.constraint(equalTo: resetBtn.leadingAnchor, constant: 100),
-            buyBtn.topAnchor.constraint(equalTo: endTotalLbl.topAnchor, constant: 50)
+            //resetBtn.trailingAnchor.constraint(equalTo: buyBtn.leadingAnchor, constant: -50),
+            
+            buyBtn.leadingAnchor.constraint(equalTo: resetBtn.trailingAnchor, constant: 30),
+            buyBtn.topAnchor.constraint(equalTo: endTotalLbl.topAnchor, constant: 50),
+            buyBtn.widthAnchor.constraint(equalTo: resetBtn.widthAnchor),
+            buyBtn.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -50)
         ])
         
         
