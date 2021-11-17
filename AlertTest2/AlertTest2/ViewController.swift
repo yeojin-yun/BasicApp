@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     var secondStepper = UIStepper()
     var thirdsSepper = UIStepper()
     
-    var stepper1 = 0
+    
     
     var firstMenu = 0
     var secondMenu = 0
@@ -63,33 +63,28 @@ class ViewController: UIViewController {
         resetBtn.setTitle("초기화", for: .normal)
         resetBtn.backgroundColor = .yellow
         resetBtn.setTitleColor(.blue, for: .normal)
-        //resetBtn.titleLabel?.font = [UIFont.systemFont(ofSize: <#T##CGFloat#>)]
+        
         resetBtn.frame.size = CGSize(width: 100, height: 30)
         
         buyBtn.setTitle("구매하기", for: .normal)
         buyBtn.backgroundColor = .blue
         buyBtn.setTitleColor(.yellow, for: .normal)
         
-        view.addSubview(walletLbl)
-        view.addSubview(totalPrice)
-        view.addSubview(menuLbl)
-        view.addSubview(priceLbl)
-        view.addSubview(numberLbl)
-        view.addSubview(menu1Lbl)
-        view.addSubview(menu2Lbl)
-        view.addSubview(menu3Lbl)
-        view.addSubview(price1)
-        view.addSubview(price2)
-        view.addSubview(price3)
-        view.addSubview(num1Lbl)
-        view.addSubview(num2Lbl)
-        view.addSubview(num3Lbl)
-        view.addSubview(endTotalLbl)
-        view.addSubview(resetBtn)
-        view.addSubview(buyBtn)
-        view.addSubview(firstStepper)
-        view.addSubview(secondStepper)
-        view.addSubview(thirdsSepper)
+        
+        
+        [walletLbl, totalPrice, menuLbl, priceLbl, numberLbl, menu1Lbl, menu2Lbl, menu3Lbl, price1, price2, price3, num1Lbl, num2Lbl, num3Lbl, endTotalLbl].forEach {
+            view.addSubview($0)
+        }
+        
+        
+        [resetBtn, buyBtn].forEach {
+            view.addSubview($0)
+        }
+        
+        
+        [firstStepper, secondStepper, thirdsSepper].forEach {
+            view.addSubview($0)
+        }
         
         resetBtn.addTarget(self, action: #selector(resetBtnTapped(_:)), for: .touchUpInside)
         buyBtn.addTarget(self, action: #selector(buyBtnTapped(_:)), for: .touchUpInside)
@@ -182,14 +177,11 @@ class ViewController: UIViewController {
         
         
     }
-    
     @objc func firstStepperTapped(_ sender: UIStepper) {
-        stepper1 = Int(sender.value)
-        num1Lbl.text = stepper1.description + "개"
-        firstMenu = stepper1 * 1500
-        endTotalLbl.text = String(firstMenu + secondMenu + thirdMenu)
-        
-        
+        let stepperNum = Int(sender.value)
+        num1Lbl.text = stepperNum.description + "개"
+        firstMenu = stepperNum * 1500
+        endTotalLbl.text = String(firstMenu + secondMenu + thirdMenu) + "원"
         
         
     }
@@ -227,6 +219,7 @@ class ViewController: UIViewController {
     
     
     @objc func buyBtnTapped(_ sender: UIButton) {
+        
         let endend = firstMenu + secondMenu + thirdMenu
         if let changedInt = Int(endTotalLbl.description) {
             if changedInt > endend {
@@ -250,26 +243,36 @@ class ViewController: UIViewController {
                 self?.firstMenu = 0
                 self?.secondMenu = 0
                 self?.thirdMenu = 0
-                self?.stepper1 = 0
-                print(alert)
-            }
-            let okAction = UIAlertAction(title: "확인", style: .default) { (alert) in
-                self.totalPrice.text = "0원"
-                self.totalPrice.text = "0원"
-                self.num1Lbl.text = "0개"
-                self.num2Lbl.text = "0개"
-                self.num3Lbl.text = "0개"
-                self.endTotalLbl.text = "0원"
                 
-                self.firstMenu = 0
-                self.secondMenu = 0
-                self.thirdMenu = 0
+                self?.firstStepper.value = 0
+                self?.secondStepper.value = 0
+                self?.thirdsSepper.value = 0
+                
+            }
+            let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] (alert) in
+                self?.totalPrice.text = "0원"
+                self?.totalPrice.text = "0원"
+                self?.num1Lbl.text = "0개"
+                self?.num2Lbl.text = "0개"
+                self?.num3Lbl.text = "0개"
+                self?.endTotalLbl.text = "0원"
+                
+                self?.firstMenu = 0
+                self?.secondMenu = 0
+                self?.thirdMenu = 0
+                
+                self?.firstStepper.value = 0
+                self?.secondStepper.value = 0
+                self?.thirdsSepper.value = 0
             }
             alert.addAction(cancleAction)
             alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
+            present(alert, animated: true)
         }
     }
+    
+    
+    
     
 }
 
