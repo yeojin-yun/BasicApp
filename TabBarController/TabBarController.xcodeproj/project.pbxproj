@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CB9554327493CB300589689 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9554227493CB300589689 /* MyViewController.swift */; };
 		0CC6C80F2746823900047A8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6C80E2746823900047A8A /* AppDelegate.swift */; };
 		0CC6C8112746823900047A8A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC6C8102746823900047A8A /* SceneDelegate.swift */; };
 		0CC6C8182746823A00047A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CC6C8172746823A00047A8A /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CB9554227493CB300589689 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		0CC6C80B2746823900047A8A /* TabBarController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TabBarController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC6C80E2746823900047A8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CC6C8102746823900047A8A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		0CC6C80D2746823900047A8A /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
+				0CB9554227493CB300589689 /* MyViewController.swift */,
 				0CC6C80E2746823900047A8A /* AppDelegate.swift */,
 				0CC6C828274683FD00047A8A /* TabBarViewController.swift */,
 				0CC6C8102746823900047A8A /* SceneDelegate.swift */,
@@ -151,6 +154,7 @@
 				0CC6C8112746823900047A8A /* SceneDelegate.swift in Sources */,
 				0CC6C82D2746868500047A8A /* SecondNavigationViewController.swift in Sources */,
 				0CC6C829274683FD00047A8A /* TabBarViewController.swift in Sources */,
+				0CB9554327493CB300589689 /* MyViewController.swift in Sources */,
 				0CC6C82B2746867B00047A8A /* FirstNavigationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

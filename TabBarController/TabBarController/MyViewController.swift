@@ -1,20 +1,18 @@
 //
-//  FirstNavigationViewController.swift
+//  MyViewController.swift
 //  TabBarController
 //
-//  Created by 순진이 on 2021/11/18.
+//  Created by 순진이 on 2021/11/20.
 //
 
 import UIKit
 
-class FirstNavigationViewController: UINavigationController {
+class MyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        
-        
+
+        // Do any additional setup after loading the view.
     }
     
 
