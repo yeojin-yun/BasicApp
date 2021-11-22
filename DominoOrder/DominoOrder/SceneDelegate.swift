@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  TabBarController
+//  DominoOrder
 //
-//  Created by 순진이 on 2021/11/18.
+//  Created by 순진이 on 2021/11/22.
 //
 
 import UIKit
@@ -13,27 +13,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        guard let scene = (scene as? UIWindowScene) else { return }
-        
-        window = UIWindow(frame: scene.coordinateSpace.bounds)
-        window?.windowScene = scene
-        
-        let tabBarController = TabBarViewController()
-        
-        let firstView = FirstViewController()
-        let secondView = SecondViewController()
-        
-        tabBarController.viewControllers = [firstView, secondView]
-        
-        let firstViewItem = UITabBarItem(title: "Category", image: #imageLiteral(resourceName: "domino's"), tag: 0)
-        let secondViewItem = UITabBarItem(title: "Wish List", image: #imageLiteral(resourceName: "wishlist"), tag: 0)
-        
-        firstView.tabBarItem = firstViewItem
-        secondView.tabBarItem = secondViewItem
-        
-        window?.rootViewController = tabBarController
-        window?.makeKeyAndVisible()
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

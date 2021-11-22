@@ -31,7 +31,7 @@ class TabBarViewController: UITabBarController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.backgroundColor = .white
         attribute()
         setTable()
         
@@ -54,19 +54,19 @@ class TabBarViewController: UITabBarController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let firstVC = FirstNavigationViewController()
+        let firstVC = FirstViewController()
+        let secondVC = SecondViewController()
         //let secondVC = SecondNavigationViewController()
         
-//        switch indexPath.row {
-//        case 0:
-//            self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
-//            //self.navigationController?.pushViewController(firstVC, animated: true)
-//        case 1:
-//            self.navigationController?.pushViewController(secondVC, animated: true)
-//        default:
-//            break
-//        }
-        self.navigationController?.pushViewController(firstVC, animated: true)
+        switch indexPath.row {
+        case 0:
+            self.navigationController?.pushViewController(firstVC, animated: true)
+        case 1:
+            self.navigationController?.pushViewController(secondVC, animated: true)
+        default:
+            break
+        }
+        //self.navigationController?.pushViewController(firstVC, animated: true)
     }
     
     func attribute() {

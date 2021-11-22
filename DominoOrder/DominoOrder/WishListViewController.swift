@@ -1,13 +1,13 @@
 //
-//  SecondNavigationViewController.swift
-//  TabBarController
+//  WishListViewController.swift
+//  DominoOrder
 //
-//  Created by 순진이 on 2021/11/18.
+//  Created by 순진이 on 2021/11/22.
 //
 
 import UIKit
 
-class SecondNavigationViewController: UINavigationController {
+class WishListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
