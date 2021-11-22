@@ -74,7 +74,12 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextVC = ProductViewController()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        switch indexPath.row {
+        case 0:
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        default:
+            break
+        }
     }
     
 }
