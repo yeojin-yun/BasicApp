@@ -66,10 +66,10 @@
 			children = (
 				0CB9554227493CB300589689 /* MyViewController.swift */,
 				0CC6C80E2746823900047A8A /* AppDelegate.swift */,
+				0CC6C8102746823900047A8A /* SceneDelegate.swift */,
 				0CC6C828274683FD00047A8A /* TabBarViewController.swift */,
 				0CB955C9274BBC8200589689 /* FirstViewController.swift */,
 				0CB955CB274BBC8A00589689 /* SecondViewController.swift */,
-				0CC6C8102746823900047A8A /* SceneDelegate.swift */,
 				0CC6C82E27468A4C00047A8A /* CustomTableViewCell.swift */,
 				0CC6C8172746823A00047A8A /* Assets.xcassets */,
 				0CC6C8192746823A00047A8A /* LaunchScreen.storyboard */,

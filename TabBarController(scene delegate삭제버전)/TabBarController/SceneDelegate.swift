@@ -16,15 +16,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        window = UIWindow(frame: scene.coordinateSpace.bounds)
-        window?.windowScene = scene
+        window = UIWindow(windowScene: scene)
+        //window?.windowScene = scene
         
         let tabBarController = TabBarViewController()
         
         let firstView = FirstViewController()
         let secondView = SecondViewController()
         
-        tabBarController.viewControllers = [firstView, secondView]
+        let nav1 = UINavigationController(rootViewController: firstView)
+        let nav2 = UINavigationController(rootViewController: secondView)
+        
+        tabBarController.viewControllers = [nav1, nav2]
         
         let firstViewItem = UITabBarItem(title: "Category", image: #imageLiteral(resourceName: "domino's"), tag: 0)
         let secondViewItem = UITabBarItem(title: "Wish List", image: #imageLiteral(resourceName: "wishlist"), tag: 0)
