@@ -29,7 +29,7 @@ extension DetailViewController {
         [imageView, quantity, upBtn, downBtn].forEach {
             view.addSubview($0)
         }
-        imageView.image = UIImage(named: <#T##String#>)
+//        imageView.image = UIImage(named: <#T##String#>)
         quantity.text = "0개"
         upBtn.setTitle("+", for: .normal)
         downBtn.setTitle("-", for: .normal)
