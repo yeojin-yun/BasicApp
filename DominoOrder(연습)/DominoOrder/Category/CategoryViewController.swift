@@ -11,6 +11,8 @@ import SnapKit
 
 class CategoryViewController: UIViewController {
     
+    
+    
     let menu: [Menu] = [
         Menu(menu: UIImage(named: "클래식.png")!),
         Menu(menu: UIImage(named: "프리미엄.png")!),
@@ -31,6 +33,9 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         setLayout()
         setBasics()
+        self.navigationItem.title = "Domino's"
+        //(동일)self.navigationController?.navigationBar.topItem?.title = "Domino's"
+        self.navigationController?.navigationBar.barTintColor = .white
     }
     
     
@@ -74,10 +79,19 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = ProductViewController()
         switch indexPath.row {
         case 0:
-            self.navigationController?.pushViewController(nextVC, animated: true)
+            self.navigationController?.pushViewController(ProductViewController(), animated: true)
+        case 1:
+            self.navigationController?.pushViewController(PremiumViewController(), animated: true)
+        case 2:
+            self.navigationController?.pushViewController(SuperSeedViewController(), animated: true)
+        case 3:
+            self.navigationController?.pushViewController(SideDishViewController(), animated: true)
+        case 4:
+            self.navigationController?.pushViewController(BeverageViewController(), animated: true)
+        case 5:
+            self.navigationController?.pushViewController(PickleSourceViewController(), animated: true)
         default:
             break
         }
@@ -85,11 +99,13 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader") as! ProductHeader
-        
         view.image.image = UIImage(named: "logo.png")
-        //ProductHeader.layoutIfNeeded()
         return view
 
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 300
     }
     
 }

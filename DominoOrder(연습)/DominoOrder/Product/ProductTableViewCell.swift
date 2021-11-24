@@ -12,9 +12,10 @@ class ProductTableViewCell: UITableViewCell {
     
     let productTitle = UILabel()
     let productImg = UIImageView()
+    let productSubText = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         setUI()
     }
     
@@ -25,6 +26,8 @@ class ProductTableViewCell: UITableViewCell {
     func setUI() {
         self.addSubview(productTitle)
         self.addSubview(productImg)
+        self.addSubview(productSubText)
+        productSubText.translatesAutoresizingMaskIntoConstraints = false
         productTitle.translatesAutoresizingMaskIntoConstraints = false
         productImg.translatesAutoresizingMaskIntoConstraints = false
         
@@ -39,6 +42,8 @@ class ProductTableViewCell: UITableViewCell {
             productTitle.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             productTitle.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
+            productSubText.leadingAnchor.constraint(equalTo:productImg.trailingAnchor, constant: 15),
+            productSubText.topAnchor.constraint(equalTo: productTitle.bottomAnchor, constant: 8)
             
         ])
         

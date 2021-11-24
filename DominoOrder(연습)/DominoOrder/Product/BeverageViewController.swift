@@ -1,21 +1,19 @@
 //
-//  ProductViewController.swift
+//  BeverageViewController.swift
 //  DominoOrder
 //
-//  Created by 순진이 on 2021/11/22.
+//  Created by 순진이 on 2021/11/24.
 //
 
 import UIKit
 
-class ProductViewController: UIViewController {
+class BeverageViewController: UIViewController {
     
-    let product: [Product] = [
-        Product(productTitle: "포테이토", productImg: UIImage(named: "포테이토.jpg")!),
-        Product(productTitle: "불고기", productImg: UIImage(named: "불고기.jpg")!),
-        Product(productTitle: "페퍼로니", productImg: UIImage(named: "페퍼로니.jpg")!),
-        Product(productTitle: "베이컨체더치즈", productImg: UIImage(named: "베이컨체더치즈.jpg")!),
-        Product(productTitle: "슈퍼슈프림", productImg: UIImage(named: "슈퍼슈프림.jpg")!),
-        Product(productTitle: "슈퍼디럭스", productImg: UIImage(named: "슈퍼디럭스.jpg")!)
+    let beverage: [Product] = [
+        Product(productTitle: "코카콜라", productImg: UIImage(named: "코카콜라.jpg")!, productSubText: "1,000원"),
+        Product(productTitle: "코카콜라 제로", productImg: UIImage(named: "코카콜라 제로.jpg")!, productSubText: "1,000원"),
+        Product(productTitle: "스프라이트", productImg: UIImage(named: "스프라이트.jpg")!, productSubText: "1,000원"),
+        Product(productTitle: "미닛메이드 스파클링 청포도", productImg: UIImage(named: "미닛메이드 스파클링 청포도.jpg")!, productSubText: "1,000원")
     ]
     
     let productTable: UITableView = {
@@ -27,34 +25,43 @@ class ProductViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        self.navigationItem.title = "음료"
         setBasics()
         setLayout()
     }
     
 }
 
-   
 
-extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
+
+extension BeverageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return product.count
+        return beverage.count
+        //switch문 사용안되는지?
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = productTable.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
-        cell.productImg.image = product[indexPath.row].productImg
-        cell.productTitle.text = product[indexPath.row].productTitle
-        
+        cell.productImg.image = beverage[indexPath.row].productImg
+        cell.productTitle.text = beverage[indexPath.row].productTitle
+        //커스텀셀에서 subtitle설정 방법 알아보기
+        cell.productSubText.text = beverage[indexPath.row].productSubText
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
-
-}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailViewController()
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+        
+    }
     
+}
+
 
 //MARK: -UI
-extension ProductViewController {
-
+extension BeverageViewController {
+    
     final private func setBasics() {
         view.addSubview(productTable)
         productTable.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.cellID)
@@ -71,4 +78,3 @@ extension ProductViewController {
         ])
     }
 }
-

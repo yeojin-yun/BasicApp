@@ -16,4 +16,5 @@ struct Menu {
 struct Product {
     var productTitle: String
     var productImg: UIImage
+    var productSubText: String
 }

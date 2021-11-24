@@ -19,6 +19,7 @@ class TabBarViewController: UITabBarController {
         let categoryVC = UINavigationController(rootViewController: CategoryViewController())
         categoryVC.tabBarItem.title = "Category"
         categoryVC.tabBarItem.image = UIImage(named: "domino's.png")
+        //self.navigationItem.title = "Domino's"
         
         
         let wishListVC = UINavigationController(rootViewController: WishListViewController())

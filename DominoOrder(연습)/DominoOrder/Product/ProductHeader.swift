@@ -27,16 +27,14 @@ class ProductHeader: UITableViewHeaderFooterView {
         
         contentView.addSubview(image)
 //        contentView.addSubview(title)
+        contentView.backgroundColor = .white
         
         NSLayoutConstraint.activate([
-//            image.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             image.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             image.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            image.widthAnchor.constraint(equalToConstant: 150),
-            image.heightAnchor.constraint(equalToConstant: 150),
-            image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
-
+            image.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            image.heightAnchor.constraint(equalTo: contentView.heightAnchor),
+            image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
 
         
