@@ -35,8 +35,8 @@ class ViewController: UIViewController {
     var secondStepper = UIStepper()
     var thirdsSepper = UIStepper()
     
-    
-    
+    let numberFormatter = NumberFormatter()
+
     var firstMenu = 0
     var secondMenu = 0
     var thirdMenu = 0
@@ -61,16 +61,24 @@ class ViewController: UIViewController {
         let stepperNum = Int(sender.value)
         num1Lbl.text = stepperNum.description + "개"
         firstMenu = stepperNum * 1500
-        endTotalLbl.text = String(firstMenu + secondMenu + thirdMenu) + "원"
-        
-        
+        let firstTotal = firstMenu + secondMenu + thirdMenu
+//        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        if let safeTotal = numberFormatter.string(for: firstTotal) {
+            endTotalLbl.text =  safeTotal + "원"
+        }
     }
     
     @objc func secondStepperTapped(_ sender: UIStepper) {
         let stepperNum = Int(sender.value)
         num2Lbl.text = stepperNum.description + "개"
         secondMenu = stepperNum * 1000
-        endTotalLbl.text = String(firstMenu + secondMenu + thirdMenu) + "원"
+        let secondTotal = firstMenu + secondMenu + thirdMenu
+        numberFormatter.numberStyle = .decimal
+        if let safeTotal = numberFormatter.string(for: secondTotal) {
+            endTotalLbl.text =  safeTotal + "원"
+        }
+        
         
     }
     
@@ -78,16 +86,42 @@ class ViewController: UIViewController {
         let stepperNum = Int(sender.value)
         num3Lbl.text = stepperNum.description + "개"
         thirdMenu = stepperNum * 1200
-        endTotalLbl.text = String(firstMenu + secondMenu + thirdMenu) + "원"
+        let thirdTotal = firstMenu + secondMenu + thirdMenu
+        numberFormatter.numberStyle = .decimal
+        if let safeTotal = numberFormatter.string(for: thirdTotal) {
+            endTotalLbl.text = safeTotal + "원"
+        }
+        
     }
     
     @objc func resetBtnTapped(_ sender: UIButton) {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
         let alert = UIAlertController(title: "내 지갑", message: "남은 돈은?", preferredStyle: .alert)
         alert.addTextField { $0.placeholder = "가진 돈 입력하기" }
-        let okAction = UIAlertAction(title: "입력", style: .default) { (textField) in
+        let okAction = UIAlertAction(title: "입력", style: .default) { [weak self] (textField) in
             if let fieldList = alert.textFields {
                 if let textField = fieldList.first {
-                    self.totalPrice.text = textField.text! + "원"
+                    self!.totalPrice.text = textField.text! + "원"
+                    
+                    
+                    [self?.num1Lbl, self?.num2Lbl, self?.num3Lbl].forEach {
+                        $0!.text = "0개"
+                    }
+                    self?.endTotalLbl.text = "0원"
+                    
+                    
+                    self?.firstMenu = 0
+                    self?.secondMenu = 0
+                    self?.thirdMenu = 0
+                    
+                    
+                    self?.firstStepper.value = 0
+                    self?.secondStepper.value = 0
+                    self?.thirdsSepper.value = 0
+
+                    
                 }
             }
         }
@@ -100,64 +134,72 @@ class ViewController: UIViewController {
     
     @objc func buyBtnTapped(_ sender: UIButton) {
         
-        let endend = firstMenu + secondMenu + thirdMenu
-        if let changedInt = Int(endTotalLbl.description) {
-            if changedInt > endend {
-                let alert = UIAlertController(title: "구매불가", message: "지갑에 돈이 부족합니다.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+//        let endend = firstMenu + secondMenu + thirdMenu
+//        if let changedInt = Int(endTotalLbl.description) {
+//            if changedInt > endend {
+//                let alert = UIAlertController(title: "구매불가", message: "지갑에 돈이 부족합니다.", preferredStyle: .alert)
+//                let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+//                alert.addAction(okAction)
+//                present(alert, animated: true, completion: nil)
+//                print(changedInt)
+//
+//            } else {
+                let alert = UIAlertController(title: "정말 구매하시겠습니까?", message: "구매금액은 \(firstMenu + secondMenu + thirdMenu)입니다.", preferredStyle: .alert)
+                let cancleAction = UIAlertAction(title: "취소", style: .cancel) { [weak self] (alert) in
+                    
+                    
+                    //self?.totalPrice.text = "0원"
+                    //self?.num1Lbl.text = "0개"
+                    //self?.num2Lbl.text = "0개"
+                    //self?.num3Lbl.text = "0개"
+                    //self?.endTotalLbl.text = "0원"
+                    [self?.totalPrice, self?.endTotalLbl].forEach {
+                        $0!.text = "0원"
+                    }
+                    
+                    [self?.num1Lbl, self?.num2Lbl, self?.num3Lbl].forEach {
+                        $0!.text = "0개"
+                    }
+                    
+                    self?.firstMenu = 0
+                    self?.secondMenu = 0
+                    self?.thirdMenu = 0
+                    
+                    self?.firstStepper.value = 0
+                    self?.secondStepper.value = 0
+                    self?.thirdsSepper.value = 0
+                    
+                    
+                }
+                let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] (alert) in
+                    //self?.totalPrice.text = "0원"
+                    //self?.num1Lbl.text = "0개"
+                    //self?.num2Lbl.text = "0개"
+                    //self?.num3Lbl.text = "0개"
+                    //self?.endTotalLbl.text = "0원"
+                    [self?.totalPrice, self?.endTotalLbl].forEach {
+                        $0!.text = "0원"
+                    }
+                    
+                    [self?.num1Lbl, self?.num2Lbl, self?.num3Lbl].forEach {
+                        $0!.text = "0개"
+                    }
+                    
+                    self?.firstMenu = 0
+                    self?.secondMenu = 0
+                    self?.thirdMenu = 0
+                    
+                    self?.firstStepper.value = 0
+                    self?.secondStepper.value = 0
+                    self?.thirdsSepper.value = 0
+                }
+                alert.addAction(cancleAction)
                 alert.addAction(okAction)
-                present(alert, animated: true, completion: nil)
-                print(changedInt)
+                present(alert, animated: true)
             }
-        } else {
-            let alert = UIAlertController(title: "정말 구매하시겠습니까?", message: "구매금액은 \(firstMenu + secondMenu + thirdMenu)입니다.", preferredStyle: .alert)
-            let cancleAction = UIAlertAction(title: "취소", style: .cancel) { [weak self] (alert) in
-                
-             
-                //self?.totalPrice.text = "0원"
-                //self?.num1Lbl.text = "0개"
-                //self?.num2Lbl.text = "0개"
-                //self?.num3Lbl.text = "0개"
-                //self?.endTotalLbl.text = "0원"
-                [self?.totalPrice, self?.endTotalLbl].forEach {
-                    $0!.text = "0원"
-                }
-                
-                [self?.num1Lbl, self?.num2Lbl, self?.num3Lbl].forEach {
-                    $0!.text = "0개"
-                }
-                
-                self?.firstStepper.value = 0
-                self?.secondStepper.value = 0
-                self?.thirdsSepper.value = 0
-                
-                
-            }
-            let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] (alert) in
-                //self?.totalPrice.text = "0원"
-                //self?.num1Lbl.text = "0개"
-                //self?.num2Lbl.text = "0개"
-                //self?.num3Lbl.text = "0개"
-                //self?.endTotalLbl.text = "0원"
-                [self?.totalPrice, self?.endTotalLbl].forEach {
-                    $0!.text = "0원"
-                }
-                
-                [self?.num1Lbl, self?.num2Lbl, self?.num3Lbl].forEach {
-                    $0!.text = "0개"
-                }
-
-                self?.firstStepper.value = 0
-                self?.secondStepper.value = 0
-                self?.thirdsSepper.value = 0
-            }
-            alert.addAction(cancleAction)
-            alert.addAction(okAction)
-            present(alert, animated: true)
         }
-    }
-}
-
+    //}
+//}
 //MARK: -UI
 extension ViewController {
     final private func setUI() {
