@@ -103,7 +103,9 @@ class ViewController: UIViewController {
         let okAction = UIAlertAction(title: "입력", style: .default) { [weak self] (textField) in
             if let fieldList = alert.textFields {
                 if let textField = fieldList.first {
-                    self!.totalPrice.text = textField.text! + "원"
+                    let price = Int(textField.text!)!
+                    let test = numberFormatter.string(for: price)
+                    self!.totalPrice.text = test! + "원"
                     
                     
                     [self?.num1Lbl, self?.num2Lbl, self?.num3Lbl].forEach {
