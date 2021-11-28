@@ -1,5 +1,8 @@
 # BasicApp
 BasicApp  
+#### 2021.11.28. 
+### 네비게이션에서 pushViewController를 하려면 푸시하려는 뷰컨도 네비게이션의 루트뷰 컨트롤러여야 한다.  
+---
 #### 2021.11.27  
 ### Navigation Controller  
 ---
