@@ -204,9 +204,7 @@ class ViewController: UIViewController {
 //}
 //MARK: -UI
 extension ViewController {
-    final private func setUI() {
-        
-    }
+
     final private func setBasics() {
         walletLbl.text = "내 지갑: "
         totalPrice.text = "0원"
