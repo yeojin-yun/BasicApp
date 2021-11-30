@@ -45,7 +45,7 @@ class CategoryViewController: UIViewController {
 extension CategoryViewController {
     final private func setLayout() {
         view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = true
+        tableView.translatesAutoresizingMaskIntoConstraints = false
    
         tableView.snp.makeConstraints {
             $0.left.equalTo(view.safeAreaLayoutGuide)

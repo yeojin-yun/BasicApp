@@ -52,9 +52,39 @@ extension PickleSourceViewController: UITableViewDelegate, UITableViewDataSource
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        switch indexPath.row {
+        case 0:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "핫소스.jpg")
+            detail.title = "핫소스"
+            
+        case 1:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "우리 피클 M.jpg")
+            detail.title = "우리 피클 M"
+            
+        case 2:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "우리 피클 L.jpg")
+            detail.title = "우리 피클 L"
+            
+        case 3:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "스위트 칠리소스.jpg")
+            detail.title = "스위트 칠리소스"
+            
+        case 4:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "갈릭 디핑 소스.jpg")
+            detail.title = "갈릭 디핑 소스"
+        default:
+            break
+        }
         
     }
     

@@ -52,9 +52,46 @@ extension SideDishViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        switch indexPath.row {
+        case 0:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "딸기 슈크림.jpg")
+            detail.title = "딸기 슈크림"
+            
+        case 1:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "포테이토 순살치킨.jpg")
+            detail.title = "포테이토 순살치킨"
+            
+        case 2:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "슈퍼곡물 치킨.jpg")
+            detail.title = "슈퍼곡물 치킨"
+            
+        case 3:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "치킨퐁듀 그라탕.jpg")
+            detail.title = "치킨퐁듀 그라탕"
+            
+        case 4:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "퀴노아 치킨 샐러드.jpg")
+            detail.title = "퀴노아 치킨 샐러드"
+            
+        case 5:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "애플 크러스트 디저트.jpg")
+            detail.title = "애플 크러스트 디저트"
+            
+        default:
+            break
+        }
         
     }
     

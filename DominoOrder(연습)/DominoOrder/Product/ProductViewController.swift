@@ -52,6 +52,9 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = productTable.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
+//        let cell1 = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+//        cell1.textLabel?.text = "10,000원"
+//
         cell.productImg.image = product[indexPath.row].productImg
         cell.productTitle.text = product[indexPath.row].productTitle
         //커스텀셀에서 subtitle설정 방법 알아보기
@@ -61,7 +64,47 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(DetailViewController(), animated: true)
+
+        switch indexPath.row {
+        case 0:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "포테이토.jpg")
+            detail.title = "포테이토"
+            
+        case 1:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "불고기.jpg")
+            detail.title = "불고기"
+            
+        case 2:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "페퍼로니.jpg")
+            detail.title = "페퍼로니"
+            
+        case 3:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "베이컨체더치즈.jpg")
+            detail.title = "베이컨체더치즈"
+            
+        case 4:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "슈퍼슈프림.jpg")
+            detail.title = "슈퍼슈프림"
+            
+        case 5:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "슈퍼디럭스.jpg")
+            detail.title = "슈퍼디럭스"
+            
+        default:
+            break
+        }
     }
 
 }

@@ -24,7 +24,7 @@ class SuperSeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.navigationItem.title = "프리미엄 피자"
+        self.navigationItem.title = "슈퍼시드 피자"
         setBasics()
         setLayout()
     }
@@ -49,9 +49,33 @@ extension SuperSeedViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        switch indexPath.row {
+        case 0:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "우리 고구마.jpg")
+            detail.title = "우리 고구마"
+            
+        case 1:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "콰트로 치즈 퐁듀.jpg")
+            detail.title = "콰트로 치즈 퐁듀"
+            
+        case 2:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "알로하 하와이안.jpg")
+            detail.title = "알로하 하와이안"
+            
+        case 3:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "글램핑 바비큐.jpg")
+            detail.title = "글램핑 바비큐"
+        default:
+            break
+        }
         
     }
     

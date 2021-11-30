@@ -43,7 +43,7 @@ class ProductTableViewCell: UITableViewCell {
             productTitle.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
             productSubText.leadingAnchor.constraint(equalTo:productImg.trailingAnchor, constant: 15),
-            productSubText.topAnchor.constraint(equalTo: productTitle.bottomAnchor, constant: 8)
+            productSubText.topAnchor.constraint(equalTo: productTitle.bottomAnchor, constant: 3)
             
         ])
         

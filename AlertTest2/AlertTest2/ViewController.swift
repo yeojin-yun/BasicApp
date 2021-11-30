@@ -45,25 +45,33 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setBasics()
         setLayout()
-        
-        
+        addTarget()
+    }
+}
+
+extension ViewController {
+    func addTarget() {
         resetBtn.addTarget(self, action: #selector(resetBtnTapped(_:)), for: .touchUpInside)
         buyBtn.addTarget(self, action: #selector(buyBtnTapped(_:)), for: .touchUpInside)
         firstStepper.addTarget(self, action: #selector(firstStepperTapped(_:)), for: .touchUpInside)
         secondStepper.addTarget(self, action: #selector(secondStepperTapped(_:)), for: .touchUpInside)
         thirdsSepper.addTarget(self, action: #selector(thirdStepperTapped(_:)), for: .touchUpInside)
-        
-        
     }
     
 
     @objc func firstStepperTapped(_ sender: UIStepper) {
         let stepperNum = Int(sender.value)
+        
         num1Lbl.text = stepperNum.description + "개"
         firstMenu = stepperNum * 1500
+        
         let firstTotal = firstMenu + secondMenu + thirdMenu
-//        let numberFormatter = NumberFormatter()
+        
+        
+        //let numberFormatter = NumberFormatter()
+        
         numberFormatter.numberStyle = .decimal
+        
         if let safeTotal = numberFormatter.string(for: firstTotal) {
             endTotalLbl.text =  safeTotal + "원"
         }
@@ -200,8 +208,7 @@ class ViewController: UIViewController {
                 present(alert, animated: true)
             }
         }
-    //}
-//}
+
 //MARK: -UI
 extension ViewController {
 

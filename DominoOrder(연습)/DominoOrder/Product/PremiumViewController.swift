@@ -51,10 +51,40 @@ extension PremiumViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        
-        self.navigationController?.pushViewController(detailVC, animated: true)
-        
+        switch indexPath.row {
+        case 0:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "더블크러스트 이베리코.jpg")
+            detail.title = "더블크러스트 이베리코"
+            
+        case 1:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "와규 앤 비스테카.jpg")
+            detail.title = "와규 앤 비스테카"
+            
+        case 2:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "블랙타이거 슈림프.jpg")
+            detail.title = "블랙타이거 슈림프"
+            
+        case 3:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "블랙앵거스 스테이크.jpg")
+            detail.title = "블랙앵거스 스테이크"
+            
+        case 4:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "직화 스테이크.jpg")
+            detail.title = "직화 스테이크"
+
+        default:
+            break
+        }
     }
     
 }

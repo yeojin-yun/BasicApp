@@ -50,9 +50,34 @@ extension BeverageViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailViewController()
-        
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        switch indexPath.row {
+        case 0:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "코카콜라.jpg")
+            detail.title = "코카콜라"
+            
+        case 1:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "코카콜라 제로.jpg")
+            detail.title = "코카콜라 제로"
+            
+        case 2:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "스프라이트.jpg")
+            detail.title = "스프라이트"
+            
+        case 3:
+            let detail = DetailViewController()
+            self.navigationController?.pushViewController(detail, animated: true)
+            DetailViewController.imageView.image = UIImage(named: "미닛메이드 스파클링 청포도.jpg")
+            detail.title = "미닛메이드 스파클링 청포도"
+            
+        default:
+            break
+        }
         
     }
     
