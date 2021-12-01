@@ -9,6 +9,15 @@ import UIKit
 
 class WishListViewController: UIViewController {
 
+//    var delegate: Myprotocol?
+    
+    let wishTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.rowHeight = 100
+        return tableView
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
@@ -16,17 +25,34 @@ class WishListViewController: UIViewController {
         //(동일)self.navigationController?.navigationBar.topItem?.title = "Domino's"
         self.navigationController?.navigationBar.barTintColor = .white
         view.backgroundColor = .white
+        wishTableView.delegate = self
+        wishTableView.dataSource = self
+        wishTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        setTable()
+        
+        
+        //let data = self.delegate?.delegateFunction(date: "hee")
+    }
+}
+
+extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        return cell
     }
-    */
-
+    
+    func setTable() {
+        view.addSubview(wishTableView)
+        wishTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            wishTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            wishTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            wishTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            wishTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
 }

@@ -18,13 +18,7 @@ class ProductViewController: UIViewController {
         Product(productTitle: "슈퍼디럭스", productImg: UIImage(named: "슈퍼디럭스.jpg")!, productSubText: "10,000원")
     ]
     
-//    let product: [Product] = [
-//        Product(productTitle: "더블크러스트 이베리코", productImg: UIImage(named: "더블크러스트 이베리코.jpg")!, productSubText: "10,000원"),
-//        Product(productTitle: "와규 앤 비스테카", productImg: UIImage(named: "와규 앤 비스테카.jpg")!, productSubText: "10,000원"),
-//        Product(productTitle: "블랙타이거 슈림프", productImg: UIImage(named: "블랙타이거 슈림프.jpg")!, productSubText: "10,000원"),
-//        Product(productTitle: "블랙앵거스 스테이크", productImg: UIImage(named: "블랙앵거스 스테이크.jpg")!, productSubText: "10,000원"),
-//        Product(productTitle: "직화 스테이크", productImg: UIImage(named: "직화 스테이크.jpg")!, productSubText: "10,000원"),
-//    ]
+
     
     let productTable: UITableView = {
         let productTable = UITableView()
@@ -71,6 +65,7 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(detail, animated: true)
             DetailViewController.imageView.image = UIImage(named: "포테이토.jpg")
             detail.title = "포테이토"
+            //detail.navigationItem.rightBarButtonItem? = UIBarButtonItem(barButtonSystemItem: .add, target: detail, action: nil)
             
         case 1:
             let detail = DetailViewController()

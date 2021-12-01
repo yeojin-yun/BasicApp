@@ -111,29 +111,36 @@ extension ViewController {
         let okAction = UIAlertAction(title: "입력", style: .default) { [weak self] (textField) in
             if let fieldList = alert.textFields {
                 if let textField = fieldList.first {
-                    let price = Int(textField.text!)!
-                    let test = numberFormatter.string(for: price)
-                    self!.totalPrice.text = test! + "원"
-                    
-                    
-                    [self?.num1Lbl, self?.num2Lbl, self?.num3Lbl].forEach {
-                        $0!.text = "0개"
+                    if let safeData = textField.text {
+                        if let safeData2 = Int(safeData) {
+                            let safeNum = numberFormatter.string(for: safeData2)
+                            self?.totalPrice.text = safeNum! + "원"
+                        }
+                        
                     }
-                    self?.endTotalLbl.text = "0원"
-                    
-                    
-                    self?.firstMenu = 0
-                    self?.secondMenu = 0
-                    self?.thirdMenu = 0
-                    
-                    
-                    self?.firstStepper.value = 0
-                    self?.secondStepper.value = 0
-                    self?.thirdsSepper.value = 0
-
-                    
                 }
             }
+            //let price = Int(textField.text)
+            //let test = numberFormatter.string(for: price)
+            //self!.totalPrice.text = test! + "원"
+            
+            
+            [self?.num1Lbl, self?.num2Lbl, self?.num3Lbl].forEach {
+                $0!.text = "0개"
+            }
+            self?.endTotalLbl.text = "0원"
+            
+            
+            self?.firstMenu = 0
+            self?.secondMenu = 0
+            self?.thirdMenu = 0
+            
+            
+            self?.firstStepper.value = 0
+            self?.secondStepper.value = 0
+            self?.thirdsSepper.value = 0
+            
+            
         }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
