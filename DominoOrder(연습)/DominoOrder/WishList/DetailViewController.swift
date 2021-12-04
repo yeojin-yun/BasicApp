@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol wishlistProtocol: class {
-    var image: UIImageView { get set }
-    var title: UILabel { get set }
-    var quantity: UILabel { get set }
-}
+
 
 class DetailViewController: UIViewController {
    
@@ -22,13 +18,17 @@ class DetailViewController: UIViewController {
     let upBtn = UIButton()
     let downBtn = UIButton()
     var totalQuantity = 0
-    
+    var selectedList: [String] = []
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(rightButtonTapped(_:)))
+        
+        
         setBasics()
         setLayout()
     }
@@ -40,14 +40,16 @@ extension DetailViewController {
     @objc func upBtnTapped(_ sender: UIButton) {
         totalQuantity += 1
         quantityLbl.text = String(totalQuantity) + "개"
-        
+        //self.navigationController?.navigationBar.topItem?.title
     }
     
     @objc func downBtnTapped(_ sender: UIButton) {
+        print(#function)
         if totalQuantity > 0 {
         totalQuantity -= 1
         quantityLbl.text = String(totalQuantity) + "개"
         }
+        
     }
     
     @objc func rightButtonTapped(_ sender: UIBarButtonItem) {
@@ -56,7 +58,14 @@ extension DetailViewController {
         //현재 title에 설정된 이름 -> Wishlist컨트롤러에 테이블뷰셀에
         //현재 quantityLbl의 수량 -> wishlist컨트롤러에 테이블뷰셀에
         
-    }
+        if let selectedItem = self.navigationController?.navigationBar.topItem?.title {
+            print(selectedItem)
+            WishListViewController.wishDictionary[selectedItem] = totalQuantity
+        }
+        
+        print(WishListViewController.wishDictionary)
+        
+        }
     
     func setBasics() {
         
@@ -68,22 +77,21 @@ extension DetailViewController {
         
         
         upBtn.setTitle("+", for: .normal)
-        upBtn.setTitleColor(.gray, for: .normal)
-        upBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-        upBtn.layer.borderWidth = 2
-        upBtn.layer.borderColor = UIColor.gray.cgColor
-        
-        
         downBtn.setTitle("-", for: .normal)
-        downBtn.setTitleColor(.gray, for: .normal)
-        downBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
-        downBtn.layer.borderWidth = 2
-        downBtn.layer.borderColor = UIColor.gray.cgColor
         
+        [upBtn, downBtn].forEach {
+            $0.setTitleColor(.gray, for: .normal)
+            $0.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+            $0.layer.borderWidth = 2
+            $0.layer.borderColor = UIColor.gray.cgColor
+        }
         
+
         upBtn.addTarget(self, action: #selector(upBtnTapped(_:)), for: .touchUpInside)
         downBtn.addTarget(self, action: #selector(downBtnTapped(_:)), for: .touchUpInside)
     }
+    
+    
     func setLayout() {
         
         let stack = UIStackView(arrangedSubviews: [downBtn, quantityLbl, upBtn])
