@@ -30,37 +30,35 @@ class WishListViewController: UIViewController {
         wishTableView.delegate = self
         wishTableView.dataSource = self
         wishTableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.cellID)
-        setDict()
+        //setDict()
         setTable()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setDict()
+        print(DetailViewController.wishDictionary)
+        //print(keysDictionary)
+        //print(valuesDictionary)
         
-        
-        
+        //wishTableView.reloadData()
     }
 }
 
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return WishListViewController.wishDictionary.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = wishTableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
-        cell.productImg.image = UIImage(named: keysDictionary[indexPath.row])
+        //cell.productImg.image = UIImage(named: keysDictionary[indexPath.row])
+        
         cell.productTitle.text = String(keysDictionary[indexPath.row])
         cell.productSubText.text = "주문수량: \(String(valuesDictionary[indexPath.row]))개"
         return cell
         
-//        let cell = productTable.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
 
-//        cell1.textLabel?.text = "10,000원"
-//
-//        cell.productImg.image = product[indexPath.row].productImg
-//        cell.productTitle.text = product[indexPath.row].productTitle
-//        //커스텀셀에서 subtitle설정 방법 알아보기
-//        cell.productSubText.text = product[indexPath.row].productSubText
-//        cell.accessoryType = .disclosureIndicator
-//
-//        return cell
     }
     
     func setTable() {
@@ -75,10 +73,10 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func setDict() {
-        for dict in WishListViewController.wishDictionary.keys {
+        for dict in DetailViewController.wishDictionary.keys {
             keysDictionary.append(dict)
         }
-        for dict in WishListViewController.wishDictionary.values {
+        for dict in DetailViewController.wishDictionary.values {
             valuesDictionary.append(dict)
         }
     }

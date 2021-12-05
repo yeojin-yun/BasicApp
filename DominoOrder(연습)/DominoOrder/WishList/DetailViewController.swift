@@ -18,7 +18,10 @@ class DetailViewController: UIViewController {
     let upBtn = UIButton()
     let downBtn = UIButton()
     var totalQuantity = 0
-    var selectedList: [String] = []
+    
+    static var wishDictionary: [String:Int] = [:]
+    static var keysDictionary: [String] = []
+    static var valuesDictionary: [Int] = []
 
     
     override func viewDidLoad() {
@@ -32,6 +35,8 @@ class DetailViewController: UIViewController {
         setBasics()
         setLayout()
     }
+    
+
     
 
 }
@@ -53,17 +58,24 @@ extension DetailViewController {
     }
     
     @objc func rightButtonTapped(_ sender: UIBarButtonItem) {
-        //wishlistController에 담기도록
-        //현재 imageView에 올라온 사진 -> wishlist컨트롤러에 테이블뷰셀에
-        //현재 title에 설정된 이름 -> Wishlist컨트롤러에 테이블뷰셀에
-        //현재 quantityLbl의 수량 -> wishlist컨트롤러에 테이블뷰셀에
         
         if let selectedItem = self.navigationController?.navigationBar.topItem?.title {
-            print(selectedItem)
-            WishListViewController.wishDictionary[selectedItem] = totalQuantity
+            
+            DetailViewController.wishDictionary[selectedItem] = totalQuantity
+            let keysArray = DetailViewController.wishDictionary.keys.sorted()
+//            DetailViewController.keysDictionary = DetailViewController.wishDictionary.keys.sorted()
+//            DetailViewController.valuesDictionary = DetailViewController.wishDictionary.values
+//            for dict in DetailViewController.wishDictionary.keys {
+//                DetailViewController.keysDictionary.append(dict)
+//            } 이렇게하면 계속해서 아이템이 중복 추가되기 때문에 안됨.
+//            for dict in DetailViewController.wishDictionary.values {
+//                DetailViewController.valuesDictionary.append(dict)
+//            }
         }
         
-        print(WishListViewController.wishDictionary)
+        print(DetailViewController.wishDictionary)
+        print(DetailViewController.keysDictionary)
+        print(DetailViewController.valuesDictionary)
         
         }
     
