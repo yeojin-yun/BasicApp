@@ -27,6 +27,7 @@
 		0CB9560E274E65E800589689 /* SuperSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9560D274E65E800589689 /* SuperSeedViewController.swift */; };
 		0CB95610274E661100589689 /* BeverageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9560F274E661100589689 /* BeverageViewController.swift */; };
 		0CB95612274E663700589689 /* PickleSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB95611274E663700589689 /* PickleSourceViewController.swift */; };
+		0CF64D1D275E4EC5002BDEB9 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF64D1C275E4EC5002BDEB9 /* OrderManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		0CB9560D274E65E800589689 /* SuperSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSeedViewController.swift; sourceTree = "<group>"; };
 		0CB9560F274E661100589689 /* BeverageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeverageViewController.swift; sourceTree = "<group>"; };
 		0CB95611274E663700589689 /* PickleSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleSourceViewController.swift; sourceTree = "<group>"; };
+		0CF64D1C275E4EC5002BDEB9 /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		0CDE01902755F54D006DE02B /* WishList */ = {
 			isa = PBXGroup;
 			children = (
+				0CF64D1C275E4EC5002BDEB9 /* OrderManager.swift */,
 				0CB95604274D369B00589689 /* DetailViewController.swift */,
 				0CB955F1274BC48200589689 /* WishListViewController.swift */,
 			);
@@ -217,6 +220,7 @@
 				0CB95612274E663700589689 /* PickleSourceViewController.swift in Sources */,
 				0CB955F2274BC48200589689 /* WishListViewController.swift in Sources */,
 				0CB955EE274BC40C00589689 /* TabBarViewController.swift in Sources */,
+				0CF64D1D275E4EC5002BDEB9 /* OrderManager.swift in Sources */,
 				0CB955DA274BC3B600589689 /* AppDelegate.swift in Sources */,
 				0CB955FF274D0E1F00589689 /* ProductHeader.swift in Sources */,
 				0CB9560E274E65E800589689 /* SuperSeedViewController.swift in Sources */,

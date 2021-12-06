@@ -19,9 +19,9 @@ class DetailViewController: UIViewController {
     let downBtn = UIButton()
     var totalQuantity = 0
     
-    static var wishDictionary: [String:Int] = [:]
-    static var keysDictionary: [String] = []
-    static var valuesDictionary: [Int] = []
+    //static var wishDictionary: [String:Int] = [:]
+    //static var keysDictionary: [String] = []
+    //static var valuesDictionary: [Int] = []
 
     
     override func viewDidLoad() {
@@ -61,8 +61,9 @@ extension DetailViewController {
         
         if let selectedItem = self.navigationController?.navigationBar.topItem?.title {
             
-            DetailViewController.wishDictionary[selectedItem] = totalQuantity
-            let keysArray = DetailViewController.wishDictionary.keys.sorted()
+            //DetailViewController.wishDictionary[selectedItem] = totalQuantity
+            OrderManager.shared.wishDictionary[selectedItem] = totalQuantity
+            
 //            DetailViewController.keysDictionary = DetailViewController.wishDictionary.keys.sorted()
 //            DetailViewController.valuesDictionary = DetailViewController.wishDictionary.values
 //            for dict in DetailViewController.wishDictionary.keys {
@@ -73,9 +74,9 @@ extension DetailViewController {
 //            }
         }
         
-        print(DetailViewController.wishDictionary)
-        print(DetailViewController.keysDictionary)
-        print(DetailViewController.valuesDictionary)
+        print(OrderManager.shared.wishDictionary)
+        //print(DetailViewController.keysDictionary)
+        //print(DetailViewController.valuesDictionary)
         
         }
     

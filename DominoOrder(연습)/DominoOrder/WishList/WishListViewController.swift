@@ -9,9 +9,9 @@ import UIKit
 
 class WishListViewController: UIViewController {
 
-    static var wishDictionary: [String:Int] = [:]
-    var keysDictionary: [String] = []
-    var valuesDictionary: [Int] = []
+    //static var wishDictionary = DetailViewController.wishDictionary
+    //var keysDictionary: [String] = []
+    //var valuesDictionary: [Int] = []
     
     let wishTableView: UITableView = {
         let tableView = UITableView()
@@ -30,15 +30,15 @@ class WishListViewController: UIViewController {
         wishTableView.delegate = self
         wishTableView.dataSource = self
         wishTableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.cellID)
-        //setDict()
+        setDict()
         setTable()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setDict()
-        print(DetailViewController.wishDictionary)
-        //print(keysDictionary)
-        //print(valuesDictionary)
+        //setDict()
+        print(OrderManager.shared.wishDictionary)
+        print(OrderManager.shared.keysDictionary)
+        print(OrderManager.shared.valuesDictionary)
         
         //wishTableView.reloadData()
     }
@@ -47,15 +47,20 @@ class WishListViewController: UIViewController {
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return WishListViewController.wishDictionary.count
+        return OrderManager.shared.wishDictionary.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = wishTableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
-        //cell.productImg.image = UIImage(named: keysDictionary[indexPath.row])
+//        cell.productImg.image = UIImage(named: keysDictionary[indexPath.row])
+        cell.productImg.image = UIImage(named: OrderManager.shared.keysDictionary[indexPath.row])
         
-        cell.productTitle.text = String(keysDictionary[indexPath.row])
-        cell.productSubText.text = "주문수량: \(String(valuesDictionary[indexPath.row]))개"
+//        cell.productTitle.text = String(keysDictionary[indexPath.row])
+        cell.productTitle.text = String(OrderManager.shared.keysDictionary[indexPath.row])
+        
+//        cell.productSubText.text = "주문수량: \(String(valuesDictionary[indexPath.row]))개"
+        cell.productSubText.text = "주문수량: \(String(OrderManager.shared.valuesDictionary[indexPath.row]))개"
+        
         return cell
         
 
@@ -73,11 +78,11 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func setDict() {
-        for dict in DetailViewController.wishDictionary.keys {
-            keysDictionary.append(dict)
+        for dict in OrderManager.shared.wishDictionary.keys {
+            OrderManager.shared.keysDictionary.append(dict)
         }
-        for dict in DetailViewController.wishDictionary.values {
-            valuesDictionary.append(dict)
+        for dict in OrderManager.shared.wishDictionary.values {
+            OrderManager.shared.valuesDictionary.append(dict)
         }
     }
 }
