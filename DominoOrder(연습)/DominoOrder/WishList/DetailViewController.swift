@@ -62,7 +62,16 @@ extension DetailViewController {
         if let selectedItem = self.navigationController?.navigationBar.topItem?.title {
             
             //DetailViewController.wishDictionary[selectedItem] = totalQuantity
+            
             OrderManager.shared.wishDictionary[selectedItem] = totalQuantity
+            
+            var keysArray = Array(OrderManager.shared.wishDictionary.keys)
+            OrderManager.shared.keysDictionary = keysArray
+            print(keysArray)
+            
+            var valuesArray = Array(OrderManager.shared.wishDictionary.values)
+            OrderManager.shared.valuesDictionary = valuesArray
+            print(valuesArray)
             
 //            DetailViewController.keysDictionary = DetailViewController.wishDictionary.keys.sorted()
 //            DetailViewController.valuesDictionary = DetailViewController.wishDictionary.values

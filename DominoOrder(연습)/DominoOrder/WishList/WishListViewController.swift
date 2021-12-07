@@ -13,6 +13,9 @@ class WishListViewController: UIViewController {
     //var keysDictionary: [String] = []
     //var valuesDictionary: [Int] = []
     
+    //var orderedMenu: String?
+    //var orderedQuantity: String?
+    
     let wishTableView: UITableView = {
         let tableView = UITableView()
         tableView.rowHeight = 120
@@ -22,26 +25,65 @@ class WishListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-        self.navigationItem.title = "WishList"
-        //(동일)self.navigationController?.navigationBar.topItem?.title = "Domino's"
-        self.navigationController?.navigationBar.barTintColor = .white
-        view.backgroundColor = .white
-        wishTableView.delegate = self
-        wishTableView.dataSource = self
-        wishTableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.cellID)
-        setDict()
+        
+
+
+        setNavigation()
         setTable()
+        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //setDict()
-        print(OrderManager.shared.wishDictionary)
-        print(OrderManager.shared.keysDictionary)
-        print(OrderManager.shared.valuesDictionary)
+        wishTableView.reloadData()
         
-        //wishTableView.reloadData()
+       
     }
+}
+
+extension WishListViewController {
+    
+    // 주문하기
+    @objc func rightBtnTapped(_ sender: UIBarButtonItem) {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        var orderedMenu = ""
+        var orderedPrice = 0
+        OrderManager.shared.keysDictionary.forEach { (item) in
+            orderedMenu += "\(item)-\(OrderManager.shared.wishDictionary[item] ?? 0)개\n"
+            orderedPrice += (OrderManager.shared.wishDictionary[item] ?? 0) * (OrderManager.shared.menuPrice[item] ?? 0)
+        }
+        
+        let alert = UIAlertController(title: "결제내역", message: "\(orderedMenu)\(orderedPrice)", preferredStyle: .alert)
+        let backAction = UIAlertAction(title: "돌아가기", style: .default, handler: nil)
+        let buyAction = UIAlertAction(title: "주문하기", style: .default, handler: nil)
+        alert.addAction(backAction)
+        alert.addAction(buyAction)
+        present(alert, animated: true, completion: nil)
+        
+
+        
+    }
+    
+    // 목록 지우기
+    @objc func leftBtnTapped(_ sender: UIBarButtonItem) {
+        OrderManager.shared.wishDictionary = [:]
+        wishTableView.reloadData()
+        print(OrderManager.shared.wishDictionary)
+    }
+    
+    func setNavigation() {
+        self.navigationItem.title = "WishList"
+        self.navigationController?.navigationBar.barTintColor = .white
+        view.backgroundColor = .white
+        
+        let rightBar = UIBarButtonItem(title: "주문", style: .plain, target: self, action: #selector(rightBtnTapped(_:)))
+        let leftBar = UIBarButtonItem(title: "목록지우기", style: .plain, target: self, action: #selector(leftBtnTapped(_:)))
+        
+        self.navigationItem.rightBarButtonItem = rightBar
+        self.navigationItem.leftBarButtonItem = leftBar
+    }
+    
 }
 
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -57,6 +99,7 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
         
 //        cell.productTitle.text = String(keysDictionary[indexPath.row])
         cell.productTitle.text = String(OrderManager.shared.keysDictionary[indexPath.row])
+        //orderedMenu = OrderManager.shared.keysDictionary[indexPath.row]
         
 //        cell.productSubText.text = "주문수량: \(String(valuesDictionary[indexPath.row]))개"
         cell.productSubText.text = "주문수량: \(String(OrderManager.shared.valuesDictionary[indexPath.row]))개"
@@ -75,14 +118,11 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
             wishTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             wishTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        wishTableView.delegate = self
+        wishTableView.dataSource = self
+        wishTableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.cellID)
     }
     
-    func setDict() {
-        for dict in OrderManager.shared.wishDictionary.keys {
-            OrderManager.shared.keysDictionary.append(dict)
-        }
-        for dict in OrderManager.shared.wishDictionary.values {
-            OrderManager.shared.valuesDictionary.append(dict)
-        }
-    }
+
 }
