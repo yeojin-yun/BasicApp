@@ -9,12 +9,7 @@ import UIKit
 
 class WishListViewController: UIViewController {
 
-    //static var wishDictionary = DetailViewController.wishDictionary
-    //var keysDictionary: [String] = []
-    //var valuesDictionary: [Int] = []
-    
-    //var orderedMenu: String?
-    //var orderedQuantity: String?
+
     
     let wishTableView: UITableView = {
         let tableView = UITableView()
@@ -36,7 +31,7 @@ class WishListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         wishTableView.reloadData()
-        
+        print(OrderManager.shared.wishDictionary)
        
     }
 }
@@ -53,10 +48,13 @@ extension WishListViewController {
             orderedMenu += "\(item)-\(OrderManager.shared.wishDictionary[item] ?? 0)개\n"
             orderedPrice += (OrderManager.shared.wishDictionary[item] ?? 0) * (OrderManager.shared.menuPrice[item] ?? 0)
         }
-        
-        let alert = UIAlertController(title: "결제내역", message: "\(orderedMenu)\(orderedPrice)", preferredStyle: .alert)
+        let changedPrice = numberFormatter.string(for: orderedPrice)
+        let alert = UIAlertController(title: "결제내역", message: "\(orderedMenu)결제금액 : \(changedPrice!)", preferredStyle: .alert)
         let backAction = UIAlertAction(title: "돌아가기", style: .default, handler: nil)
-        let buyAction = UIAlertAction(title: "주문하기", style: .default, handler: nil)
+        let buyAction = UIAlertAction(title: "주문하기", style: .default) { [weak self] action in
+            OrderManager.shared.wishDictionary = [:]
+            self?.wishTableView.reloadData()
+        }
         alert.addAction(backAction)
         alert.addAction(buyAction)
         present(alert, animated: true, completion: nil)
@@ -68,8 +66,10 @@ extension WishListViewController {
     // 목록 지우기
     @objc func leftBtnTapped(_ sender: UIBarButtonItem) {
         OrderManager.shared.wishDictionary = [:]
+        
         wishTableView.reloadData()
-        print(OrderManager.shared.wishDictionary)
+        
+        
     }
     
     func setNavigation() {

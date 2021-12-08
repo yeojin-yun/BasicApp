@@ -45,49 +45,42 @@ extension DetailViewController {
     @objc func upBtnTapped(_ sender: UIButton) {
         totalQuantity += 1
         quantityLbl.text = String(totalQuantity) + "개"
-        //self.navigationController?.navigationBar.topItem?.title
     }
     
+    
     @objc func downBtnTapped(_ sender: UIButton) {
-        print(#function)
         if totalQuantity > 0 {
         totalQuantity -= 1
         quantityLbl.text = String(totalQuantity) + "개"
         }
-        
     }
     
     @objc func rightButtonTapped(_ sender: UIBarButtonItem) {
-        
-        if let selectedItem = self.navigationController?.navigationBar.topItem?.title {
-            
-            //DetailViewController.wishDictionary[selectedItem] = totalQuantity
-            
-            OrderManager.shared.wishDictionary[selectedItem] = totalQuantity
-            
-            var keysArray = Array(OrderManager.shared.wishDictionary.keys)
-            OrderManager.shared.keysDictionary = keysArray
-            print(keysArray)
-            
-            var valuesArray = Array(OrderManager.shared.wishDictionary.values)
-            OrderManager.shared.valuesDictionary = valuesArray
-            print(valuesArray)
-            
-//            DetailViewController.keysDictionary = DetailViewController.wishDictionary.keys.sorted()
-//            DetailViewController.valuesDictionary = DetailViewController.wishDictionary.values
-//            for dict in DetailViewController.wishDictionary.keys {
-//                DetailViewController.keysDictionary.append(dict)
-//            } 이렇게하면 계속해서 아이템이 중복 추가되기 때문에 안됨.
-//            for dict in DetailViewController.wishDictionary.values {
-//                DetailViewController.valuesDictionary.append(dict)
-//            }
+        if totalQuantity > 0 {
+            if let selectedItem = self.navigationController?.navigationBar.topItem?.title {
+              if !OrderManager.shared.keysDictionary.contains(selectedItem) {
+                OrderManager.shared.wishDictionary[selectedItem] = totalQuantity
+                let keysArray = Array(OrderManager.shared.wishDictionary.keys)
+                OrderManager.shared.keysDictionary = keysArray
+                let valuesArray = Array(OrderManager.shared.wishDictionary.values)
+                OrderManager.shared.valuesDictionary = valuesArray
+                
+              } else {
+                OrderManager.shared.wishDictionary[selectedItem] = 0
+                OrderManager.shared.wishDictionary[selectedItem]! += totalQuantity
+                    print(OrderManager.shared.wishDictionary[selectedItem]!)
+                    
+                    let keysArray = Array(OrderManager.shared.wishDictionary.keys)
+                    OrderManager.shared.keysDictionary = keysArray
+                    print(keysArray)
+                    
+                    let valuesArray = Array(OrderManager.shared.wishDictionary.values)
+                    OrderManager.shared.valuesDictionary = valuesArray
+                    print(valuesArray)
+                }
+            }
         }
-        
-        print(OrderManager.shared.wishDictionary)
-        //print(DetailViewController.keysDictionary)
-        //print(DetailViewController.valuesDictionary)
-        
-        }
+    }
     
     func setBasics() {
         
