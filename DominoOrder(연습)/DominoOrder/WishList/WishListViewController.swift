@@ -20,21 +20,18 @@ class WishListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-
+    
         setNavigation()
         setTable()
-        
-
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         wishTableView.reloadData()
         print(OrderManager.shared.wishDictionary)
-       
     }
 }
+
 
 extension WishListViewController {
     
@@ -58,20 +55,16 @@ extension WishListViewController {
         alert.addAction(backAction)
         alert.addAction(buyAction)
         present(alert, animated: true, completion: nil)
-        
-
-        
     }
+    
     
     // 목록 지우기
     @objc func leftBtnTapped(_ sender: UIBarButtonItem) {
         OrderManager.shared.wishDictionary = [:]
-        
         wishTableView.reloadData()
-        
-        
     }
     
+    //네비게이션 컨트롤러 셋팅
     func setNavigation() {
         self.navigationItem.title = "WishList"
         self.navigationController?.navigationBar.barTintColor = .white
@@ -83,31 +76,27 @@ extension WishListViewController {
         self.navigationItem.rightBarButtonItem = rightBar
         self.navigationItem.leftBarButtonItem = leftBar
     }
-    
 }
+
 
 extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return OrderManager.shared.wishDictionary.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = wishTableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
-//        cell.productImg.image = UIImage(named: keysDictionary[indexPath.row])
         cell.productImg.image = UIImage(named: OrderManager.shared.keysDictionary[indexPath.row])
         
-//        cell.productTitle.text = String(keysDictionary[indexPath.row])
         cell.productTitle.text = String(OrderManager.shared.keysDictionary[indexPath.row])
-        //orderedMenu = OrderManager.shared.keysDictionary[indexPath.row]
         
-//        cell.productSubText.text = "주문수량: \(String(valuesDictionary[indexPath.row]))개"
         cell.productSubText.text = "주문수량: \(String(OrderManager.shared.valuesDictionary[indexPath.row]))개"
         
         return cell
-        
-
     }
+    
+    
     
     func setTable() {
         view.addSubview(wishTableView)
@@ -123,6 +112,4 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
         wishTableView.dataSource = self
         wishTableView.register(ProductTableViewCell.self, forCellReuseIdentifier: ProductTableViewCell.cellID)
     }
-    
-
 }

@@ -18,28 +18,20 @@ class DetailViewController: UIViewController {
     let upBtn = UIButton()
     let downBtn = UIButton()
     var totalQuantity = 0
-    
-    //static var wishDictionary: [String:Int] = [:]
-    //static var keysDictionary: [String] = []
-    //static var valuesDictionary: [Int] = []
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(rightButtonTapped(_:)))
-        
         
         setBasics()
         setLayout()
     }
-    
-
-    
-
 }
+
 
 extension DetailViewController {
     @objc func upBtnTapped(_ sender: UIButton) {
@@ -55,35 +47,32 @@ extension DetailViewController {
         }
     }
     
+    
     @objc func rightButtonTapped(_ sender: UIBarButtonItem) {
         if totalQuantity > 0 {
             if let selectedItem = self.navigationController?.navigationBar.topItem?.title {
-              if !OrderManager.shared.keysDictionary.contains(selectedItem) {
+                if !OrderManager.shared.wishDictionary.keys.contains(selectedItem) {
                 OrderManager.shared.wishDictionary[selectedItem] = totalQuantity
-                let keysArray = Array(OrderManager.shared.wishDictionary.keys)
-                OrderManager.shared.keysDictionary = keysArray
-                let valuesArray = Array(OrderManager.shared.wishDictionary.values)
-                OrderManager.shared.valuesDictionary = valuesArray
-                
+                dictionarySetting()
+
               } else {
-                OrderManager.shared.wishDictionary[selectedItem] = 0
                 OrderManager.shared.wishDictionary[selectedItem]! += totalQuantity
-                    print(OrderManager.shared.wishDictionary[selectedItem]!)
-                    
-                    let keysArray = Array(OrderManager.shared.wishDictionary.keys)
-                    OrderManager.shared.keysDictionary = keysArray
-                    print(keysArray)
-                    
-                    let valuesArray = Array(OrderManager.shared.wishDictionary.values)
-                    OrderManager.shared.valuesDictionary = valuesArray
-                    print(valuesArray)
+                dictionarySetting()
                 }
             }
         }
     }
     
+    
+    func dictionarySetting() {
+        let keysArray = Array(OrderManager.shared.wishDictionary.keys)
+        OrderManager.shared.keysDictionary = keysArray
+        let valuesArray = Array(OrderManager.shared.wishDictionary.values)
+        OrderManager.shared.valuesDictionary = valuesArray
+    }
+    
+    
     func setBasics() {
-        
         quantityLbl.text = "0개"
         quantityLbl.textColor = .white
         quantityLbl.backgroundColor = .gray
@@ -134,12 +123,8 @@ extension DetailViewController {
             quantityLbl.widthAnchor.constraint(equalToConstant: 150),
             upBtn.widthAnchor.constraint(equalToConstant: 40),
             downBtn.widthAnchor.constraint(equalToConstant: 40)
-            
         ])
     }
-    
-
-    
 }
 
 
