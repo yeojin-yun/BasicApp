@@ -28,7 +28,6 @@ class SuperSeedViewController: UIViewController {
         setBasics()
         setLayout()
     }
-    
 }
 
 
@@ -36,14 +35,12 @@ class SuperSeedViewController: UIViewController {
 extension SuperSeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return SuperSeedPizza.count
-        //switch문 사용안되는지?
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = productTable.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
         cell.productImg.image = SuperSeedPizza[indexPath.row].productImg
         cell.productTitle.text = SuperSeedPizza[indexPath.row].productTitle
-        //커스텀셀에서 subtitle설정 방법 알아보기
         cell.productSubText.text = SuperSeedPizza[indexPath.row].productSubText
         cell.accessoryType = .disclosureIndicator
         return cell

@@ -29,7 +29,6 @@ class BeverageViewController: UIViewController {
         setBasics()
         setLayout()
     }
-    
 }
 
 
@@ -37,18 +36,20 @@ class BeverageViewController: UIViewController {
 extension BeverageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return beverage.count
-        //switch문 사용안되는지?
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = productTable.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
+        
         cell.productImg.image = beverage[indexPath.row].productImg
         cell.productTitle.text = beverage[indexPath.row].productTitle
-        //커스텀셀에서 subtitle설정 방법 알아보기
         cell.productSubText.text = beverage[indexPath.row].productSubText
+        
         cell.accessoryType = .disclosureIndicator
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
@@ -78,9 +79,7 @@ extension BeverageViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
-        
     }
-    
 }
 
 

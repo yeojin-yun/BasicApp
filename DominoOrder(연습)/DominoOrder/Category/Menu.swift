@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
+
 struct Menu {
     let menu: UIImage
 }
-
 
 struct Product {
     var productTitle: String

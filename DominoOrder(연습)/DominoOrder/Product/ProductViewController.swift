@@ -46,17 +46,17 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = productTable.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
-//        let cell1 = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
-//        cell1.textLabel?.text = "10,000원"
-//
+
         cell.productImg.image = product[indexPath.row].productImg
         cell.productTitle.text = product[indexPath.row].productTitle
-        //커스텀셀에서 subtitle설정 방법 알아보기
         cell.productSubText.text = product[indexPath.row].productSubText
+        
         cell.accessoryType = .disclosureIndicator
         
         return cell
     }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         switch indexPath.row {
@@ -65,7 +65,7 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(detail, animated: true)
             DetailViewController.imageView.image = UIImage(named: "포테이토.jpg")
             detail.title = "포테이토"
-            //detail.navigationItem.rightBarButtonItem? = UIBarButtonItem(barButtonSystemItem: .add, target: detail, action: nil)
+        
             
         case 1:
             let detail = DetailViewController()

@@ -34,19 +34,18 @@ class PremiumViewController: UIViewController {
 }
 
 
-
 extension PremiumViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return premiumPizza.count
-        //switch문 사용안되는지?
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = productTable.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
         cell.productImg.image = premiumPizza[indexPath.row].productImg
         cell.productTitle.text = premiumPizza[indexPath.row].productTitle
-        //커스텀셀에서 subtitle설정 방법 알아보기
         cell.productSubText.text = premiumPizza[indexPath.row].productSubText
+        
         cell.accessoryType = .disclosureIndicator
         return cell
     }

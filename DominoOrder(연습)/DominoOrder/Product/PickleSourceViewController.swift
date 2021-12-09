@@ -39,18 +39,20 @@ class PickleSourceViewController: UIViewController {
 extension PickleSourceViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pickleSource.count
-        //switch문 사용안되는지?
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = productTable.dequeueReusableCell(withIdentifier: ProductTableViewCell.cellID, for: indexPath) as! ProductTableViewCell
+        
         cell.productImg.image = pickleSource[indexPath.row].productImg
         cell.productTitle.text = pickleSource[indexPath.row].productTitle
-        //커스텀셀에서 subtitle설정 방법 알아보기
         cell.productSubText.text = pickleSource[indexPath.row].productSubText
+        
         cell.accessoryType = .disclosureIndicator
         return cell
     }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:

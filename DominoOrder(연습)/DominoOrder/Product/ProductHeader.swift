@@ -22,12 +22,9 @@ class ProductHeader: UITableViewHeaderFooterView {
     }
     
     func setUI() {
-        image.translatesAutoresizingMaskIntoConstraints = false
-//        title.translatesAutoresizingMaskIntoConstraints = false
-        
-        contentView.addSubview(image)
-//        contentView.addSubview(title)
         contentView.backgroundColor = .white
+        contentView.addSubview(image)
+        image.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
@@ -36,8 +33,5 @@ class ProductHeader: UITableViewHeaderFooterView {
             image.heightAnchor.constraint(equalTo: contentView.heightAnchor),
             image.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
-
-        
     }
-    
 }

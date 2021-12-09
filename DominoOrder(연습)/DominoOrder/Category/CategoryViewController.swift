@@ -12,7 +12,6 @@ import SnapKit
 class CategoryViewController: UIViewController {
     
     
-    
     let menu: [Menu] = [
         Menu(menu: UIImage(named: "클래식.png")!),
         Menu(menu: UIImage(named: "프리미엄.png")!),
@@ -21,6 +20,7 @@ class CategoryViewController: UIViewController {
         Menu(menu: UIImage(named: "음료.png")!),
         Menu(menu: UIImage(named: "피클소스.png")!)
     ]
+    
     
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -65,6 +65,8 @@ extension CategoryViewController {
     
 }
 
+
+//테이블뷰 셋팅 (delegate, dataSource)
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menu.count

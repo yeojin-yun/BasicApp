@@ -67,6 +67,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C91C0CF27621CA100D5D2B8 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				0CB955DB274BC3B600589689 /* SceneDelegate.swift */,
+				0CB955D9274BC3B600589689 /* AppDelegate.swift */,
+				0CB955DF274BC3B600589689 /* Main.storyboard */,
+				0CB955E2274BC3B700589689 /* Assets.xcassets */,
+				0CB955E4274BC3B700589689 /* LaunchScreen.storyboard */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
 		0CB955CD274BC3B600589689 = {
 			isa = PBXGroup;
 			children = (
@@ -86,15 +98,10 @@
 		0CB955D8274BC3B600589689 /* DominoOrder */ = {
 			isa = PBXGroup;
 			children = (
-				0CB955ED274BC40C00589689 /* TabBarViewController.swift */,
 				0CB95606274E519500589689 /* Category */,
 				0CB95608274E51DE00589689 /* Product */,
 				0CDE01902755F54D006DE02B /* WishList */,
-				0CB955D9274BC3B600589689 /* AppDelegate.swift */,
-				0CB955DB274BC3B600589689 /* SceneDelegate.swift */,
-				0CB955DF274BC3B600589689 /* Main.storyboard */,
-				0CB955E2274BC3B700589689 /* Assets.xcassets */,
-				0CB955E4274BC3B700589689 /* LaunchScreen.storyboard */,
+				0C91C0CF27621CA100D5D2B8 /* support */,
 				0CB955E7274BC3B700589689 /* Info.plist */,
 			);
 			path = DominoOrder;
@@ -103,6 +110,7 @@
 		0CB95606274E519500589689 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				0CB955ED274BC40C00589689 /* TabBarViewController.swift */,
 				0CB955EF274BC47A00589689 /* CategoryViewController.swift */,
 				0CB955F3274BC5A200589689 /* CustomTableViewCell.swift */,
 				0CB955F5274BC76500589689 /* Menu.swift */,
