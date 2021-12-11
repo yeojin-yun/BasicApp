@@ -3,12 +3,6 @@ BasicApp
 #### 2021.12.11
 ### UITabBarController in code
 '''
-//
-//  SceneDelegate.swift
-//  TabBar(in code)
-//
-//  Created by 순진이 on 2021/12/09.
-//
 
 import UIKit
 
