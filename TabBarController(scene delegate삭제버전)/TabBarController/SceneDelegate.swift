@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let nav2 = UINavigationController(rootViewController: secondView)
         
         tabBarController.viewControllers = [nav1, nav2]
+        //tabBarController.setViewControllers([nav1, nav2], animated: true)
         
         let firstViewItem = UITabBarItem(title: "Category", image: #imageLiteral(resourceName: "domino's"), tag: 0)
         let secondViewItem = UITabBarItem(title: "Wish List", image: #imageLiteral(resourceName: "wishlist"), tag: 0)

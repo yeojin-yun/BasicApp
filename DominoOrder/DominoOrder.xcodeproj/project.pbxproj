@@ -19,7 +19,15 @@
 		0CB955F6274BC76500589689 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB955F5274BC76500589689 /* Menu.swift */; };
 		0CB955F9274BC93D00589689 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0CB955F8274BC93D00589689 /* SnapKit */; };
 		0CB955FB274BCD4700589689 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB955FA274BCD4700589689 /* ProductViewController.swift */; };
-		0CB955FD274D052000589689 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB955FC274D052000589689 /* ProductTableViewCell.swift */; };
+		0CB955FF274D0E1F00589689 /* ProductHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB955FE274D0E1F00589689 /* ProductHeader.swift */; };
+		0CB95603274D168C00589689 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB95602274D168C00589689 /* ProductTableViewCell.swift */; };
+		0CB95605274D369B00589689 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB95604274D369B00589689 /* DetailViewController.swift */; };
+		0CB9560A274E601900589689 /* PremiumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB95609274E601900589689 /* PremiumViewController.swift */; };
+		0CB9560C274E645B00589689 /* SideDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9560B274E645B00589689 /* SideDishViewController.swift */; };
+		0CB9560E274E65E800589689 /* SuperSeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9560D274E65E800589689 /* SuperSeedViewController.swift */; };
+		0CB95610274E661100589689 /* BeverageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB9560F274E661100589689 /* BeverageViewController.swift */; };
+		0CB95612274E663700589689 /* PickleSourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB95611274E663700589689 /* PickleSourceViewController.swift */; };
+		0CF64D1D275E4EC5002BDEB9 /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF64D1C275E4EC5002BDEB9 /* OrderManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +44,15 @@
 		0CB955F3274BC5A200589689 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		0CB955F5274BC76500589689 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		0CB955FA274BCD4700589689 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
-		0CB955FC274D052000589689 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		0CB955FE274D0E1F00589689 /* ProductHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHeader.swift; sourceTree = "<group>"; };
+		0CB95602274D168C00589689 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
+		0CB95604274D369B00589689 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0CB95609274E601900589689 /* PremiumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumViewController.swift; sourceTree = "<group>"; };
+		0CB9560B274E645B00589689 /* SideDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideDishViewController.swift; sourceTree = "<group>"; };
+		0CB9560D274E65E800589689 /* SuperSeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSeedViewController.swift; sourceTree = "<group>"; };
+		0CB9560F274E661100589689 /* BeverageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeverageViewController.swift; sourceTree = "<group>"; };
+		0CB95611274E663700589689 /* PickleSourceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickleSourceViewController.swift; sourceTree = "<group>"; };
+		0CF64D1C275E4EC5002BDEB9 /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +67,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C91C0CF27621CA100D5D2B8 /* support */ = {
+			isa = PBXGroup;
+			children = (
+				0CB955DB274BC3B600589689 /* SceneDelegate.swift */,
+				0CB955D9274BC3B600589689 /* AppDelegate.swift */,
+				0CB955DF274BC3B600589689 /* Main.storyboard */,
+				0CB955E2274BC3B700589689 /* Assets.xcassets */,
+				0CB955E4274BC3B700589689 /* LaunchScreen.storyboard */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
 		0CB955CD274BC3B600589689 = {
 			isa = PBXGroup;
 			children = (
@@ -70,21 +98,49 @@
 		0CB955D8274BC3B600589689 /* DominoOrder */ = {
 			isa = PBXGroup;
 			children = (
-				0CB955D9274BC3B600589689 /* AppDelegate.swift */,
-				0CB955DB274BC3B600589689 /* SceneDelegate.swift */,
-				0CB955ED274BC40C00589689 /* TabBarViewController.swift */,
-				0CB955DF274BC3B600589689 /* Main.storyboard */,
-				0CB955E2274BC3B700589689 /* Assets.xcassets */,
-				0CB955E4274BC3B700589689 /* LaunchScreen.storyboard */,
+				0CB95606274E519500589689 /* Category */,
+				0CB95608274E51DE00589689 /* Product */,
+				0CDE01902755F54D006DE02B /* WishList */,
+				0C91C0CF27621CA100D5D2B8 /* support */,
 				0CB955E7274BC3B700589689 /* Info.plist */,
-				0CB955EF274BC47A00589689 /* CategoryViewController.swift */,
-				0CB955FA274BCD4700589689 /* ProductViewController.swift */,
-				0CB955F1274BC48200589689 /* WishListViewController.swift */,
-				0CB955F3274BC5A200589689 /* CustomTableViewCell.swift */,
-				0CB955F5274BC76500589689 /* Menu.swift */,
-				0CB955FC274D052000589689 /* ProductTableViewCell.swift */,
 			);
 			path = DominoOrder;
+			sourceTree = "<group>";
+		};
+		0CB95606274E519500589689 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0CB955ED274BC40C00589689 /* TabBarViewController.swift */,
+				0CB955EF274BC47A00589689 /* CategoryViewController.swift */,
+				0CB955F3274BC5A200589689 /* CustomTableViewCell.swift */,
+				0CB955F5274BC76500589689 /* Menu.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		0CB95608274E51DE00589689 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				0CB955FE274D0E1F00589689 /* ProductHeader.swift */,
+				0CB95602274D168C00589689 /* ProductTableViewCell.swift */,
+				0CB955FA274BCD4700589689 /* ProductViewController.swift */,
+				0CB95609274E601900589689 /* PremiumViewController.swift */,
+				0CB9560D274E65E800589689 /* SuperSeedViewController.swift */,
+				0CB9560B274E645B00589689 /* SideDishViewController.swift */,
+				0CB9560F274E661100589689 /* BeverageViewController.swift */,
+				0CB95611274E663700589689 /* PickleSourceViewController.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		0CDE01902755F54D006DE02B /* WishList */ = {
+			isa = PBXGroup;
+			children = (
+				0CF64D1C275E4EC5002BDEB9 /* OrderManager.swift */,
+				0CB95604274D369B00589689 /* DetailViewController.swift */,
+				0CB955F1274BC48200589689 /* WishListViewController.swift */,
+			);
+			path = WishList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,13 +219,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CB9560A274E601900589689 /* PremiumViewController.swift in Sources */,
+				0CB95610274E661100589689 /* BeverageViewController.swift in Sources */,
+				0CB95605274D369B00589689 /* DetailViewController.swift in Sources */,
 				0CB955F4274BC5A200589689 /* CustomTableViewCell.swift in Sources */,
 				0CB955F0274BC47A00589689 /* CategoryViewController.swift in Sources */,
-				0CB955FD274D052000589689 /* ProductTableViewCell.swift in Sources */,
 				0CB955F6274BC76500589689 /* Menu.swift in Sources */,
+				0CB95612274E663700589689 /* PickleSourceViewController.swift in Sources */,
 				0CB955F2274BC48200589689 /* WishListViewController.swift in Sources */,
 				0CB955EE274BC40C00589689 /* TabBarViewController.swift in Sources */,
+				0CF64D1D275E4EC5002BDEB9 /* OrderManager.swift in Sources */,
 				0CB955DA274BC3B600589689 /* AppDelegate.swift in Sources */,
+				0CB955FF274D0E1F00589689 /* ProductHeader.swift in Sources */,
+				0CB9560E274E65E800589689 /* SuperSeedViewController.swift in Sources */,
+				0CB9560C274E645B00589689 /* SideDishViewController.swift in Sources */,
+				0CB95603274D168C00589689 /* ProductTableViewCell.swift in Sources */,
 				0CB955FB274BCD4700589689 /* ProductViewController.swift in Sources */,
 				0CB955DC274BC3B600589689 /* SceneDelegate.swift in Sources */,
 			);
