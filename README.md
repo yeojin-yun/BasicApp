@@ -2,8 +2,7 @@
 BasicApp  
 #### 2021.12.11
 ### UITabBarController in code
-'''
-
+```swift
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -40,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
-'''
+```
 
 
 ---
