@@ -2,7 +2,7 @@
 BasicApp  
 #### 2021.12.11
 ### UITabBarController in code
-''' swift
+``` swift
 //
 //  SceneDelegate.swift
 //  TabBar(in code)
@@ -46,7 +46,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
-'''
+```
 
 
 ---
