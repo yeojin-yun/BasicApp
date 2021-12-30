@@ -2,6 +2,7 @@
 BasicApp  
 #### 2021.12.11
 ### UITabBarController in code
+<<<<<<< HEAD
 ``` swift
 //
 //  SceneDelegate.swift
@@ -10,6 +11,9 @@ BasicApp
 //  Created by 순진이 on 2021/12/09.
 //
 
+=======
+```swift
+>>>>>>> 6f155fc0edb4320569832496d0e2cf55e77c3276
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
