@@ -1,0 +1,6 @@
+framework module Pods_URLSession_Starter {
+  umbrella header "Pods-URLSession-Starter-umbrella.h"
+
+  export *
+  module * { export * }
+}
