@@ -6,11 +6,14 @@
 //
 
 import UIKit
-import SnapKit
+
 
 class ViewController: UIViewController {
 
     let tempLbl = UILabel()
+    let feelsLikeLbl = UILabel()
+    let idLbl = UILabel()
+    let mainLbl = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,28 +28,33 @@ extension ViewController {
     private func getWeather() {
         
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=cc67530774268e4f6e4250794df2dca2") else { return }
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
+            //에러 여부 체크
             guard error == nil else { return print(error!) }
-            //에러가 없는 경우
             
+            //응답 코드 확인
             guard let response = response as? HTTPURLResponse,
                   (200..<400).contains(response.statusCode) else { return print("Invalid Response") }
             
-            
+            //데이터 확인
             guard let data = data else { return }
-            
-            let jsonDecoder = JSONDecoder()
-            let decodeData = try jsonDecoder.decode(WeatherData.self, from: data)
-            let temp = decodeData.main.temp
-            
             do {
-                if let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                    if let main = jsonObject["main"] as? [String: Double] {
-                        let temp = main["temp"]!
-                        DispatchQueue.main.async {
-                            self.tempLbl.text = String(temp)
-                        }
-                    }
+                let jsonDecoder = JSONDecoder()
+                let decodeData = try jsonDecoder.decode(WeatherData.self, from: data)
+                let temp = decodeData.main.temp
+                let feelsLike = decodeData.main.feelsLike
+                let id = decodeData.weather[0].id
+                let main = decodeData.weather[0].main
+                DispatchQueue.main.async {
+                    self.tempLbl.text = "temp: \(String(temp))"
+                    self.tempLbl.backgroundColor = .lightGray
+                    self.feelsLikeLbl.text = "feels_like: \(String(feelsLike))"
+                    self.feelsLikeLbl.backgroundColor = .lightGray
+                    self.idLbl.text = "id: \(String(id))"
+                    self.idLbl.backgroundColor = .lightGray
+                    self.mainLbl.text = "main: \(String(main))"
+                    self.mainLbl.backgroundColor = .lightGray
                 }
             } catch {
                 print("Parshing Error")
@@ -68,14 +76,30 @@ extension ViewController {
         setConstraints()
     }
     final private func setAttributes() {
-        tempLbl.text = "32.5"
+        tempLbl.text = "temp"
+        feelsLikeLbl.text = "feels_Like"
+        idLbl.text = "id"
+        mainLbl.text = "main"
+        
     }
     final private func setConstraints() {
-        view.addSubview(tempLbl)
-        tempLbl.translatesAutoresizingMaskIntoConstraints = false
+        [tempLbl, feelsLikeLbl, idLbl, mainLbl].forEach {
+            view.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
         NSLayoutConstraint.activate([
             tempLbl.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            tempLbl.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+            tempLbl.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+            
+            feelsLikeLbl.topAnchor.constraint(equalTo: tempLbl.bottomAnchor, constant: 15),
+            feelsLikeLbl.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+
+            idLbl.topAnchor.constraint(equalTo: feelsLikeLbl.bottomAnchor, constant: 15),
+            idLbl.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+
+            mainLbl.topAnchor.constraint(equalTo: idLbl.bottomAnchor, constant: 15),
+            mainLbl.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
         ])
     }
 }
