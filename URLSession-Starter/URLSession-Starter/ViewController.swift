@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 extension ViewController {
     private func getWeather() {
         
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=cc67530774268e4f6e4250794df2dca2") else { return }
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?appid=4999a8c6b45fbd5bb0de1b72f2690fef&q=seoul&units=metric") else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             //에러 여부 체크
