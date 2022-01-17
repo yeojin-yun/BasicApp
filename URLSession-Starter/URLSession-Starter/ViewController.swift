@@ -29,7 +29,9 @@ extension ViewController {
         
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?appid=4999a8c6b45fbd5bb0de1b72f2690fef&q=seoul&units=metric") else { return }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        let urlSession = URLSession.shared
+        
+        let task = urlSession.dataTask(with: url) { data, response, error in
             //에러 여부 체크
             guard error == nil else { return print(error!) }
             
@@ -60,7 +62,9 @@ extension ViewController {
                 print("Parshing Error")
                 print(error)
             }
-        }.resume()
+        }
+            
+        task.resume()
     // 에러 : 있을수도 있고, 없을수도 있기 때문에 옵셔널 형태
     // 데이터 : 에러가 없을 때 데이터가 있음
     // 레스폰즈 : 결과
