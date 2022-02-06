@@ -31,7 +31,8 @@ extension ViewController{
     @objc func getTempTapped(_ sender: UIButton) {
         let url = "https://api.openweathermap.org/data/2.5/weather?appid=cc67530774268e4f6e4250794df2dca2&units=metric&q=seoul"
         
-        //        let alamo = AF.request(url, method: .get, parameters: [:], encoding: URLEncoding.default, headers: ["Content-Type":"application/json", "Accept":"application/json"]).validate(statusCode: 200..<300)
+        
+        
         AF.request(url).validate(statusCode: 200..<300).responseDecodable(of: WeatherManager.self) { (response) in
             guard let safeResponse = response.value else { return }
             
@@ -39,39 +40,38 @@ extension ViewController{
             DispatchQueue.main.async {
                 self.mainLbl.text = String(temp)
             }
-
         }
+    }
+    
+    @objc func didTapped(_ sender: UIButton) {
+        let request = AF.request("https://api.openweathermap.org/data/2.5/weather?appid=cc67530774268e4f6e4250794df2dca2&units=metric&q=seoul")
+        request.validate().responseDecodable(of: WeatherManager.self) { response in
+            switch response.result {
+            case .success(let weather):
+                self.mainLbl.text = String(weather.main.temp)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    @objc func btnTapped(_ sender: UIButton) {
         
+        let request = AF.request("https://api.openweathermap.org/data/2.5/weather?appid=cc67530774268e4f6e4250794df2dca2&units=metric&q=seoul")//, method: .get, parameters: nil, encoding: URLEncoding.default, headers: ["Content-Type":"application/json", "Accept":"application/json"], interceptor: nil, requestModifier: nil)
         
-        //        { response in
-        //            switch response.result {
-        //            case .success(let jsonData):
-        //                do {
-        //                    let jsondecoder = JSONDecoder()
-        //                    let decodedData = try jsondecoder.decode(WeatherManager.self, from: jsonData)
-        //                    let temp = decodedData.mainLbl
-        //
-        //                } catch {
-        //
-        //                }
-        //            case .failure(let error):
-        //                print(error)
-        //            }
-        //        }
-        
-        //        Alamofire.request("https://api.github.com/users", method: .get, parameters: [:], encoding: URLEncoding.default, headers: ["Content-Type":"application/json", "Accept":"application/json"])
-        //                    .validate(statusCode: 200..<300)
-        //                    .responseJSON { (response) in
-        //                    if let JSON = response.result.value
-        //                    {
-        //                        print(JSON)
-        //                    }
-        //                }
-        
-        
-        
+        request.validate(statusCode: 200..<300).responseData { response in
+            
+            switch response.result {
+            case .success(let weather):
+                print(weather)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
+
+
 
 
 
@@ -95,7 +95,7 @@ extension ViewController {
         
     }
     final private func addTarget() {
-        myButton.addTarget(self, action: #selector(getTempTapped(_:)), for: .touchUpInside)
+        myButton.addTarget(self, action: #selector(btnTapped(_:)), for: .touchUpInside)
     }
     
     final private func setConstraints() {
@@ -105,6 +105,7 @@ extension ViewController {
         imgView.snp.makeConstraints {
             $0.top.leading.trailing.bottom.equalToSuperview()
         }
+        
         
         mainLbl.snp.makeConstraints {
             $0.center.equalToSuperview()
@@ -116,7 +117,6 @@ extension ViewController {
             $0.top.equalTo(mainLbl.snp.bottom).offset(120)
             $0.centerX.equalToSuperview()
         }
-        
     }
 }
 
